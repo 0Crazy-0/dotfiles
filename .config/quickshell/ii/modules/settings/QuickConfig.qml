@@ -125,7 +125,7 @@ ContentPage {
                         text: Translation.tr("Pick wallpaper image on your system")
                     }
                     onClicked: {
-                        Quickshell.execDetached(["hyprctl", "dispatch", "global", "quickshell:wallpaperSelectorToggle"])
+                        Quickshell.execDetached(["qs", "-c", "ii", "ipc", "call", "wallpaperSelector", "toggle"])
                     }
                     mainContentComponent: Component {
                         RowLayout {

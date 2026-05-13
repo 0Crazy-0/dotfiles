@@ -17,7 +17,7 @@ Singleton {
     }
 
     function lock() {
-        Quickshell.execDetached(["hyprctl", "dispatch", "global", "quickshell:lock"]);
+        Quickshell.execDetached(["loginctl", "lock-session"]);
     }
 
     function suspend() {

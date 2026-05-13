@@ -324,7 +324,7 @@ Item {
             property real columnSpacing: 5
             Layout.fillWidth: true
             radius: Appearance.rounding.normal - root.padding
-            color: "#181818"
+            color: Appearance.colors.colLayer2
             implicitWidth: tagInputField.implicitWidth
             implicitHeight: Math.max(inputFieldRowLayout.implicitHeight + inputFieldRowLayout.anchors.topMargin 
                 + commandButtonsRow.implicitHeight + commandButtonsRow.anchors.bottomMargin + columnSpacing, 45)
@@ -551,7 +551,7 @@ Item {
                         delegate: ApiCommandButton {
                             property string commandRepresentation: `${root.commandPrefix}${modelData.name}`
                             buttonText: commandRepresentation
-                            colBackground: "#181818"
+                            colBackground: Appearance.colors.colLayer2
 
                             downAction: () => {
                                 if (modelData.sendDirectly) {

@@ -27,7 +27,7 @@ Rectangle {
     implicitHeight: columnLayout.implicitHeight + root.messagePadding * 2
 
     radius: Appearance.rounding.normal
-    color: "#262626"
+    color: Appearance.colors.colLayer1
 
     function saveMessage() {
         if (!root.editing) return;

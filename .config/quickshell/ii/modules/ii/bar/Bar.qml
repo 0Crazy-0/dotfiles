@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import Quickshell
 import Quickshell.Io
@@ -8,11 +10,8 @@ import qs.services
 import qs.modules.common
 import qs.modules.common.widgets
 
-
 Scope {
     id: bar
-
-    readonly property int osdHideMouseMoveThreshold: 20
     property bool showBarBackground: Config.options.bar.showBackground
 
     Variants {
@@ -31,10 +30,6 @@ Scope {
             component: PanelWindow { // Bar window
                 id: barRoot
                 screen: barLoader.modelData
-
-                property var brightnessMonitor: Brightness.getMonitorForScreen(barLoader.modelData)
-                property real useShortenedForm: (Appearance.sizes.barHellaShortenScreenWidthThreshold >= screen.width) ? 2 : (Appearance.sizes.barShortenScreenWidthThreshold >= screen.width) ? 1 : 0
-                readonly property int centerSideModuleWidth: (useShortenedForm == 2) ? Appearance.sizes.barCenterSideModuleWidthHellaShortened : (useShortenedForm == 1) ? Appearance.sizes.barCenterSideModuleWidthShortened : Appearance.sizes.barCenterSideModuleWidth
 
                 Timer {
                     id: showBarTimer
@@ -67,6 +62,7 @@ Scope {
                 }
                 color: "transparent"
 
+                // Positioning
                 anchors {
                     top: !Config.options.bar.bottom
                     bottom: Config.options.bar.bottom
@@ -74,17 +70,34 @@ Scope {
                     right: true
                 }
 
+                margins {
+                    right: (Config.options.interactions.deadPixelWorkaround.enable && barRoot.anchors.right) * -1
+                    bottom: (Config.options.interactions.deadPixelWorkaround.enable && barRoot.anchors.bottom) * -1
+                }
+
+                // Include in focus grab
+                Component.onCompleted: {
+                    GlobalFocusGrab.addPersistent(barRoot);
+                }
+                Component.onDestruction: {
+                    GlobalFocusGrab.removePersistent(barRoot);
+                }
+
                 MouseArea  {
                     id: hoverRegion
                     hoverEnabled: true
-                    anchors.fill: parent
+                    anchors {
+                        fill: parent
+                        rightMargin: (Config.options.interactions.deadPixelWorkaround.enable && barRoot.anchors.right) * 1
+                        bottomMargin: (Config.options.interactions.deadPixelWorkaround.enable && barRoot.anchors.bottom) * 1
+                    }
 
                     Item {
                         id: hoverMaskRegion
                         anchors {
                             fill: barContent
-                            topMargin: -1
-                            bottomMargin: -1
+                            topMargin: -Config.options.bar.autoHide.hoverRegionWidth
+                            bottomMargin: -Config.options.bar.autoHide.hoverRegionWidth
                         }
                     }
 
@@ -98,7 +111,8 @@ Scope {
                             top: parent.top
                             bottom: undefined
                             topMargin: (Config?.options.bar.autoHide.enable && !mustShow) ? -Appearance.sizes.barHeight : 0
-                            bottomMargin: 0
+                            bottomMargin: (Config.options.interactions.deadPixelWorkaround.enable && barRoot.anchors.bottom) * -1
+                            rightMargin: (Config.options.interactions.deadPixelWorkaround.enable && barRoot.anchors.right) * -1
                         }
                         Behavior on anchors.topMargin {
                             animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
@@ -183,7 +197,7 @@ Scope {
                                     bottom: Config.options.bar.bottom ? parent.bottom : undefined
                                 }
                                 implicitSize: Appearance.rounding.screenRounding
-                                color: showBarBackground ? "Appearance.colors.colLayer0 ": "transparent"
+                                color: showBarBackground ? Appearance.colors.colLayer0 : "transparent"
 
                                 corner: RoundCorner.CornerEnum.TopRight
                                 states: State {
