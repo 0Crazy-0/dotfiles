@@ -191,6 +191,47 @@ install_item() {
   fi
 }
 
+setup_python_venv() {
+  local venv_dir="$HOME/.local/state/quickshell/.venv"
+  
+  print_info "Setting up Python virtual environment..."
+  
+  if [ -d "$venv_dir" ]; then
+    print_success "Python venv already exists. Skipping."
+    return 0
+  fi
+
+  if ! command -v uv >/dev/null 2>&1; then
+    print_error "uv not found. Make sure dependencies.sh was run first."
+    return 1
+  fi
+
+  mkdir -p "$venv_dir"
+  
+  if uv venv --prompt .venv "$venv_dir" -p 3.12; then
+    print_success "Venv created."
+  else
+    print_error "Failed to create venv."
+    return 1
+  fi
+
+  local requirements="$DOTFILES_DIR/requirements.txt"
+  
+  if [ ! -f "$requirements" ]; then
+    print_warning "requirements.txt not found. Installing minimal packages..."
+    uv pip install --python "$venv_dir/bin/python3" \
+      materialyoucolor==2.0.10 pillow==11.1.0 numpy
+    return 0
+  fi
+
+  if uv pip install --python "$venv_dir/bin/python3" -r "$requirements"; then
+    print_success "Python packages installed."
+  else
+    print_error "Failed to install Python packages."
+    return 1
+  fi
+}
+
 # --- MAIN EXECUTION FLOW ---
 
 # Setup Environment
