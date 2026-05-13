@@ -264,79 +264,79 @@ ApplicationWindow {
                     }
                 }
 
-                ContentSection {
-                    icon: "format_paint"
-                    title: Translation.tr("Style & wallpaper")
+                // ContentSection {
+                //     icon: "format_paint"
+                //     title: Translation.tr("Style & wallpaper")
 
-                    ButtonGroup {
-                        Layout.alignment: Qt.AlignHCenter
-                        LightDarkPreferenceButton {
-                            dark: false
-                        }
-                        LightDarkPreferenceButton {
-                            dark: true
-                        }
-                    }
+                //     ButtonGroup {
+                //         Layout.alignment: Qt.AlignHCenter
+                //         LightDarkPreferenceButton {
+                //             dark: false
+                //         }
+                //         LightDarkPreferenceButton {
+                //             dark: true
+                //         }
+                //     }
 
-                    RowLayout {
-                        Layout.alignment: Qt.AlignHCenter
-                        RippleButtonWithIcon {
-                            id: rndWallBtn
-                            visible: Config.options.policies.weeb === 1
-                            Layout.alignment: Qt.AlignHCenter
-                            buttonRadius: Appearance.rounding.small
-                            materialIcon: "ifl"
-                            mainText: konachanWallProc.running ? Translation.tr("Be patient...") : Translation.tr("Random: Konachan")
-                            onClicked: {
-                                console.log(konachanWallProc.command.join(" "));
-                                konachanWallProc.running = true;
-                            }
-                            StyledToolTip {
-                                text: Translation.tr("Random SFW Anime wallpaper from Konachan\nImage is saved to ~/Pictures/Wallpapers")
-                            }
-                        }
-                        RippleButtonWithIcon {
-                            materialIcon: "wallpaper"
-                            StyledToolTip {
-                                text: Translation.tr("Pick wallpaper image on your system")
-                            }
-                            onClicked: {
-                                Quickshell.execDetached([`${Directories.wallpaperSwitchScriptPath}`]);
-                            }
-                            mainContentComponent: Component {
-                                RowLayout {
-                                    spacing: 10
-                                    StyledText {
-                                        font.pixelSize: Appearance.font.pixelSize.small
-                                        text: Translation.tr("Choose file")
-                                        color: Appearance.colors.colOnSecondaryContainer
-                                    }
-                                    RowLayout {
-                                        spacing: 3
-                                        KeyboardKey {
-                                            key: "Ctrl"
-                                        }
-                                        KeyboardKey {
-                                            key: "󰖳"
-                                        }
-                                        StyledText {
-                                            Layout.alignment: Qt.AlignVCenter
-                                            text: "+"
-                                        }
-                                        KeyboardKey {
-                                            key: "T"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                //     RowLayout {
+                //         Layout.alignment: Qt.AlignHCenter
+                //         RippleButtonWithIcon {
+                //             id: rndWallBtn
+                //             visible: Config.options.policies.weeb === 1
+                //             Layout.alignment: Qt.AlignHCenter
+                //             buttonRadius: Appearance.rounding.small
+                //             materialIcon: "ifl"
+                //             mainText: konachanWallProc.running ? Translation.tr("Be patient...") : Translation.tr("Random: Konachan")
+                //             onClicked: {
+                //                 console.log(konachanWallProc.command.join(" "));
+                //                 konachanWallProc.running = true;
+                //             }
+                //             StyledToolTip {
+                //                 text: Translation.tr("Random SFW Anime wallpaper from Konachan\nImage is saved to ~/Pictures/Wallpapers")
+                //             }
+                //         }
+                //         RippleButtonWithIcon {
+                //             materialIcon: "wallpaper"
+                //             StyledToolTip {
+                //                 text: Translation.tr("Pick wallpaper image on your system")
+                //             }
+                //             onClicked: {
+                //                 Quickshell.execDetached([`${Directories.wallpaperSwitchScriptPath}`]);
+                //             }
+                //             mainContentComponent: Component {
+                //                 RowLayout {
+                //                     spacing: 10
+                //                     StyledText {
+                //                         font.pixelSize: Appearance.font.pixelSize.small
+                //                         text: Translation.tr("Choose file")
+                //                         color: Appearance.colors.colOnSecondaryContainer
+                //                     }
+                //                     RowLayout {
+                //                         spacing: 3
+                //                         KeyboardKey {
+                //                             key: "Ctrl"
+                //                         }
+                //                         KeyboardKey {
+                //                             key: "󰖳"
+                //                         }
+                //                         StyledText {
+                //                             Layout.alignment: Qt.AlignVCenter
+                //                             text: "+"
+                //                         }
+                //                         KeyboardKey {
+                //                             key: "T"
+                //                         }
+                //                     }
+                //                 }
+                //             }
+                //         }
+                //     }
 
-                    NoticeBox {
-                        Layout.fillWidth: true
-                        text: Translation.tr("Change any time later with /dark, /light, /wallpaper in the launcher\nIf the shell's colors aren't changing:\n    1. Open the right sidebar with Super+N\n    2. Click \"Reload Hyprland & Quickshell\" in the top-right corner")
-                    }
-                }
+                //     NoticeBox {
+                //         Layout.fillWidth: true
+                //         text: Translation.tr("Change any time later with /dark, /light, /wallpaper in the launcher\nIf the shell's colors aren't changing:\n    1. Open the right sidebar with Super+N\n    2. Click \"Reload Hyprland & Quickshell\" in the top-right corner")
+                //     }
+                // }
 
                 ContentSection {
                     icon: "rule"
@@ -441,20 +441,20 @@ ApplicationWindow {
                             }
                         }
 
-                        RippleButtonWithIcon {
-                            materialIcon: "help"
-                            mainText: Translation.tr("Usage")
-                            onClicked: {
-                                Qt.openUrlExternally("https://end-4.github.io/dots-hyprland-wiki/en/ii-qs/02usage/");
-                            }
-                        }
-                        RippleButtonWithIcon {
-                            materialIcon: "construction"
-                            mainText: Translation.tr("Configuration")
-                            onClicked: {
-                                Qt.openUrlExternally("https://end-4.github.io/dots-hyprland-wiki/en/ii-qs/03config/");
-                            }
-                        }
+                        // RippleButtonWithIcon {
+                        //     materialIcon: "help"
+                        //     mainText: Translation.tr("Usage")
+                        //     onClicked: {
+                        //         Qt.openUrlExternally("https://end-4.github.io/dots-hyprland-wiki/en/ii-qs/02usage/");
+                        //     }
+                        // }
+                        // RippleButtonWithIcon {
+                        //     materialIcon: "construction"
+                        //     mainText: Translation.tr("Configuration")
+                        //     onClicked: {
+                        //         Qt.openUrlExternally("https://end-4.github.io/dots-hyprland-wiki/en/ii-qs/03config/");
+                        //     }
+                        // }
                     }
                 }
 
@@ -470,7 +470,7 @@ ApplicationWindow {
                             nerdIcon: "󰊤"
                             mainText: Translation.tr("GitHub")
                             onClicked: {
-                                Qt.openUrlExternally("https://github.com/end-4/dots-hyprland");
+                                Qt.openUrlExternally("https://github.com/0Crazy-0/dotfiles/blob/main/SECURITY.md");
                             }
                         }
                         RippleButtonWithIcon {
