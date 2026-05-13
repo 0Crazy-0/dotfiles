@@ -2,7 +2,7 @@
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/0CrazyLove/dotfiles.git
+git clone https://github.com/0Crazy-0/dotfiles
 cd ~/dotfiles
 ```
 
