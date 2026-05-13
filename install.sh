@@ -286,6 +286,8 @@ if [ -d "$HOME/.config/quickshell" ]; then
     init_shapes_submodule
 fi
 
+setup_python_venv
+
 # Fish Starship Hook
 if [ -f "$HOME/.config/fish/config.fish" ] && ! grep -q "starship init fish" "$HOME/.config/fish/config.fish"; then
     echo "starship init fish | source" >> "$HOME/.config/fish/config.fish"
