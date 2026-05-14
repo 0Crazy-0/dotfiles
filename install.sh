@@ -15,7 +15,7 @@ BACKUP_DIR="$HOME/.configbackup/$(date +%Y%m%d_%H%M%S)"
 WALLPAPERS_DIR="$HOME/Documents/"
 WALLPAPERS_REPO="https://github.com/0CrazyLove/walls"
 DOTS_HYPRLAND_DIR="$HOME/dots-hyprland"
-WALLPAPER="$HOME/.config/quickshell/ii/assets/images/default_wallpaper.png"
+WALLPAPER="$HOME/.config/quickshell/ii/assets/images/default_wallpaper.jpg"
 
 # --- Helper Functions ---
 print_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
