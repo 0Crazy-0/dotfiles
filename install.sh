@@ -287,7 +287,8 @@ if [ -d "$HOME/.config/quickshell" ]; then
 fi
 
 setup_python_venv
-bash ~/.config/quickshell/ii/scripts/colors/switchwall.sh --image "$WALLPAPER"
+export ILLOGICAL_IMPULSE_VIRTUAL_ENV="$HOME/.local/state/quickshell/.venv"
+bash ~/.config/quickshell/ii/scripts/colors/switchwall.sh --image "$WALLPAPER" > /dev/null 2>&1
 
 # Fish Starship Hook
 if [ -f "$HOME/.config/fish/config.fish" ] && ! grep -q "starship init fish" "$HOME/.config/fish/config.fish"; then
