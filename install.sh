@@ -287,6 +287,7 @@ if [ -d "$HOME/.config/quickshell" ]; then
 fi
 
 setup_python_venv
+bash ~/.config/quickshell/ii/scripts/colors/switchwall.sh --image "$WALLPAPER"
 
 # Fish Starship Hook
 if [ -f "$HOME/.config/fish/config.fish" ] && ! grep -q "starship init fish" "$HOME/.config/fish/config.fish"; then
