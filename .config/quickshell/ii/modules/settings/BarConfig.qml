@@ -6,7 +6,7 @@ import qs.modules.common.widgets
 
 ContentPage {
     forceWidth: true
-
+    //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     // ContentSection {
     //     icon: "notifications"
     //     title: Translation.tr("Notifications")
@@ -208,6 +208,7 @@ ContentPage {
         }
         ConfigRow {
             uniform: true
+            //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
             // ConfigSwitch {
             //     buttonIcon: "dark_mode"
             //     text: Translation.tr("Dark/Light toggle")
@@ -238,6 +239,7 @@ ContentPage {
         }
     }
 
+    //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     // ContentSection {
     //     icon: "cloud"
     //     title: Translation.tr("Weather")
@@ -335,6 +337,7 @@ ContentPage {
         }
     }
 
+    //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     // ContentSection {
     //     icon: "tooltip"
     //     title: Translation.tr("Tooltips")

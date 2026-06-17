@@ -164,6 +164,7 @@ ContentPage {
                 }
             }
         }
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // ContentSubsection {
         //     title: Translation.tr("Generate translation with Gemini")
         //     tooltip: Translation.tr("You'll need to enter your Gemini API key first.\nType /key on the sidebar for instructions.")
@@ -289,7 +290,7 @@ ContentPage {
     ContentSection {
         icon: "nest_clock_farsight_analog"
         title: Translation.tr("Time")
-
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // ConfigSwitch {
         //     buttonIcon: "pace"
         //     text: Translation.tr("Second precision")
@@ -334,7 +335,7 @@ ContentPage {
             }
         }
     }
-
+    //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     // ContentSection {
     //     icon: "work_alert"
     //     title: Translation.tr("Work safety")

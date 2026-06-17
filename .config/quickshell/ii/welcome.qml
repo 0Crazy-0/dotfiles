@@ -25,6 +25,7 @@ ApplicationWindow {
     property bool showNextTime: false
     visible: true
     onClosing: {
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         Quickshell.execDetached(["notify-send", Translation.tr("Welcome app"), Translation.tr("Enjoy! To open the settings app , hit <tt>Super+I</tt> (✿◠‿◠)"), "-a", "Shell"]);
         Qt.quit();
     }

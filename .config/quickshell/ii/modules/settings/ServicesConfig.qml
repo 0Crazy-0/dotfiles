@@ -157,7 +157,7 @@ ContentPage {
                     }
                 }
             }
-
+            //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
             // ConfigRow {
             //     uniform: true
             //     MaterialTextArea {
@@ -202,7 +202,7 @@ ContentPage {
             }
         }
     }
-
+    //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     // ContentSection {
     //     icon: "weather_mix"
     //     title: Translation.tr("Weather")

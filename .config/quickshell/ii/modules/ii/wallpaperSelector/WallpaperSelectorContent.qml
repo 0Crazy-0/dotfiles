@@ -299,6 +299,7 @@ MouseArea {
                             horizontalCenter: parent.horizontalCenter
                             bottomMargin: 8
                         }
+                        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
                         // IconToolbarButton {
                         //     implicitWidth: height
                         //     onClicked: {

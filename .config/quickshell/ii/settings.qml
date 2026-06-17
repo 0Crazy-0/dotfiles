@@ -39,6 +39,12 @@ ApplicationWindow {
             iconRotation: 180,
             component: "modules/settings/BarConfig.qml"
         },
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
+        // {
+        //     name: Translation.tr("Background"),
+        //     icon: "texture",
+        //     component: "modules/settings/BackgroundConfig.qml"
+        // },
         {
             name: Translation.tr("Interface"),
             icon: "bottom_app_bar",
@@ -133,12 +139,11 @@ ApplicationWindow {
                     buttonRadius: Appearance.rounding.full
                     implicitWidth: 35
                     implicitHeight: 35
-                     enabled: false 
                     onClicked: root.close()
                     contentItem: MaterialSymbol {
                         anchors.centerIn: parent
                         horizontalAlignment: Text.AlignHCenter
-                        // text: "close"
+                        text: "close"
                         iconSize: 20
                     }
                 }

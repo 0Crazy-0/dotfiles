@@ -29,6 +29,7 @@ ContentPage {
                 text: Translation.tr("Shell & utilities theming must also be enabled")
             }
         }
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // ConfigSwitch {
         //     buttonIcon: "terminal"
         //     text: Translation.tr("Terminal")

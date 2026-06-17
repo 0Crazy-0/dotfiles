@@ -6,7 +6,7 @@ import qs.modules.common.widgets
 
 ContentPage {
     forceWidth: true
-
+    //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     // ContentSection {
     //     icon: "keyboard"
     //     title: Translation.tr("Cheat sheet")
@@ -156,7 +156,7 @@ ContentPage {
                 text: Translation.tr("If you want to somehow use fingerprint unlock...")
             }
         }
-
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // ConfigSwitch {
         //     buttonIcon: "account_circle"
         //     text: Translation.tr('Launch on startup')
@@ -196,7 +196,7 @@ ContentPage {
 
         ContentSubsection {
             title: Translation.tr("Style: general")
-
+            //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
             // ConfigSwitch {
             //     buttonIcon: "center_focus_weak"
             //     text: Translation.tr('Center clock')

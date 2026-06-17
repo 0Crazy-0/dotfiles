@@ -1,3 +1,4 @@
+//Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
 // import QtQuick
 // import QtQuick.Layouts
 // import qs.services

@@ -71,8 +71,6 @@ ContentPage {
                 StyledImage {
                     id: wallpaperPreview
                     anchors.fill: parent
-                    sourceSize.width: parent.implicitWidth
-                    sourceSize.height: parent.implicitHeight
                     fillMode: Image.PreserveAspectCrop
                     source: Config.options.background.wallpaperPath
                     cache: false
@@ -125,7 +123,7 @@ ContentPage {
                         text: Translation.tr("Pick wallpaper image on your system")
                     }
                     onClicked: {
-                        Quickshell.execDetached(["qs", "-c", "ii", "ipc", "call", "wallpaperSelector", "toggle"])
+                        Quickshell.execDetached(["qs", "-c", "ii", "ipc", "call", "wallpaperSelector", "toggle"]) //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
                     }
                     mainContentComponent: Component {
                         RowLayout {
@@ -141,7 +139,7 @@ ContentPage {
                                     key: "Ctrl"
                                 }
                                 KeyboardKey {
-                                    key: "󰖳"
+                                    key: Config.options.cheatsheet.superKey ?? "󰖳"
                                 }
                                 StyledText {
                                     Layout.alignment: Qt.AlignVCenter
@@ -154,6 +152,8 @@ ContentPage {
                         }
                     }
                 }
+                
+                //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
                 // RowLayout {
                 //     Layout.alignment: Qt.AlignHCenter
                 //     Layout.fillWidth: true
@@ -218,15 +218,13 @@ ContentPage {
             ]
         }
 
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // ConfigSwitch {
         //     buttonIcon: "ev_shadow"
         //     text: Translation.tr("Transparency")
         //     checked: Config.options.appearance.transparency.enable
         //     onCheckedChanged: {
         //         Config.options.appearance.transparency.enable = checked;
-        //     }
-        //     StyledToolTip {
-        //         text: Translation.tr("Might look ass. Unsupported.")
         //     }
         // }
     }
@@ -296,7 +294,7 @@ ContentPage {
                 }
             }
         }
-
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // ConfigRow {
         //     ContentSubsection {
         //         title: Translation.tr("Screen round corner")

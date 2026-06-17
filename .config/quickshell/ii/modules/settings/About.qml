@@ -147,7 +147,7 @@ ContentPage {
             
         }
     }
-     //crazy
+     //crazy - //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         ContentSection {
         icon: "folder_managed"
         title: Translation.tr("Dotfiles")
