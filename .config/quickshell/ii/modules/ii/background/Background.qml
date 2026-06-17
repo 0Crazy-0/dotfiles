@@ -84,6 +84,7 @@ Variants {
                 return "transparent";
             return CF.ColorUtils.mix(Appearance.colors.colLayer0, Appearance.colors.colPrimary, 0.75);
         }
+        //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         // Behavior on color {
         //     animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
         // }
@@ -209,6 +210,7 @@ Variants {
 
             WidgetCanvas {
                 id: widgetCanvas
+                //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
                 // anchors {
                 //     left: wallpaper.left
                 //     right: wallpaper.right

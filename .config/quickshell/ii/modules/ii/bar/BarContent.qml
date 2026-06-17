@@ -1,4 +1,4 @@
-import "./weather"
+import qs.modules.ii.bar.weather
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -27,25 +27,24 @@ Item { // Bar content region
 
     // Background shadow
     Loader {
-        active: Config.options.bar.showBackground && Config.options.bar.cornerStyle === 1
+        active: Config.options.bar.showBackground && Config.options.bar.cornerStyle === 1 && Config.options.bar.floatStyleShadow
         anchors.fill: barBackground
         sourceComponent: StyledRectangularShadow {
-            anchors.fill: undefined
+            anchors.fill: undefined // The loader's anchors act on this, and this should not have any anchor
             target: barBackground
         }
     }
-
     // Background
     Rectangle {
         id: barBackground
         anchors {
             fill: parent
-            margins: Config.options.bar.cornerStyle === 1 ? (Appearance.sizes.hyprlandGapsOut) : 0
+            margins: Config.options.bar.cornerStyle === 1 ? (Appearance.sizes.hyprlandGapsOut) : 0 // idk why but +1 is needed
         }
-        color: "transparent"
+        color: "transparent" //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
         radius: Config.options.bar.cornerStyle === 1 ? Appearance.rounding.windowRounding : 0
         border.width: Config.options.bar.cornerStyle === 1 ? 1 : 0
-        border.color: "#494949"
+        border.color: "#494949" //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
     }
 
     FocusedScrollMouseArea { // Left side | scroll to change brightness
@@ -60,8 +59,8 @@ Item { // Bar content region
         implicitWidth: leftSectionRowLayout.implicitWidth
         implicitHeight: Appearance.sizes.baseBarHeight
 
-        onScrollDown: root.brightnessMonitor.setBrightness(root.brightnessMonitor.brightness - 0.05)
-        onScrollUp: root.brightnessMonitor.setBrightness(root.brightnessMonitor.brightness + 0.05)
+        onScrollDown: Brightness.decreaseBrightness()
+        onScrollUp: Brightness.increaseBrightness()
         onMovedAway: GlobalStates.osdBrightnessOpen = false
         onPressed: event => {
             if (event.button === Qt.LeftButton)
@@ -71,7 +70,7 @@ Item { // Bar content region
         // Visual content
         ScrollHint {
             reveal: barLeftSideMouseArea.hovered
-            icon: "light_mode"
+            icon: Hyprsunset.gamma === 100 ? "light_mode" : "wb_twilight"
             tooltipText: Translation.tr("Scroll to change brightness")
             side: "left"
             anchors.left: parent.left
@@ -81,24 +80,26 @@ Item { // Bar content region
         RowLayout {
             id: leftSectionRowLayout
             anchors.fill: parent
-            spacing: 10
+            spacing: 0
 
-            LeftSidebarButton {
+            LeftSidebarButton { // Left sidebar button
+                id: leftSidebarButton
                 Layout.alignment: Qt.AlignVCenter
                 Layout.leftMargin: Appearance.rounding.screenRounding
                 colBackground: barLeftSideMouseArea.hovered ? Appearance.colors.colLayer1Hover : ColorUtils.transparentize(Appearance.colors.colLayer1Hover, 1)
             }
 
             ActiveWindow {
-                visible: root.useShortenedForm === 0
+                Layout.leftMargin: 10 + (leftSidebarButton.visible ? 0 : Appearance.rounding.screenRounding)
                 Layout.rightMargin: Appearance.rounding.screenRounding
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                visible: root.useShortenedForm === 0
             }
         }
     }
 
-    RowLayout { // Middle section
+    Row { // Middle section
         id: middleSection
         anchors {
             top: parent.top
@@ -109,8 +110,14 @@ Item { // Bar content region
 
         BarGroup {
             id: leftCenterGroup
-            Layout.preferredWidth: root.centerSideModuleWidth
-            Layout.fillHeight: false
+            anchors.verticalCenter: parent.verticalCenter
+            implicitWidth: root.centerSideModuleWidth
+            
+            //Do not remove or modify this; it comes from the dotfile: https://github.com/0Crazy-0/dotfiles
+            // Resources {
+            //     alwaysShowAllResources: root.useShortenedForm === 2
+            //     Layout.fillWidth: root.useShortenedForm === 2
+            // }
 
             Media {
                 visible: root.useShortenedForm < 2
@@ -124,13 +131,14 @@ Item { // Bar content region
 
         BarGroup {
             id: middleCenterGroup
+            anchors.verticalCenter: parent.verticalCenter
             padding: workspacesWidget.widgetPadding
 
             Workspaces {
                 id: workspacesWidget
                 Layout.fillHeight: true
-                
                 MouseArea {
+                    // Right-click to toggle overview
                     anchors.fill: parent
                     acceptedButtons: Qt.RightButton
 
@@ -149,9 +157,9 @@ Item { // Bar content region
 
         MouseArea {
             id: rightCenterGroup
-            implicitWidth: rightCenterGroupContent.implicitWidth
+            anchors.verticalCenter: parent.verticalCenter
+            implicitWidth: root.centerSideModuleWidth
             implicitHeight: rightCenterGroupContent.implicitHeight
-            Layout.preferredWidth: root.centerSideModuleWidth
 
             onPressed: {
                 GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
@@ -173,7 +181,7 @@ Item { // Bar content region
                 }
 
                 BatteryIndicator {
-                    visible: (root.useShortenedForm < 2 && UPower.displayDevice.isLaptopBattery)
+                    visible: (root.useShortenedForm < 2 && Battery.available)
                     Layout.alignment: Qt.AlignVCenter
                 }
             }
@@ -192,16 +200,8 @@ Item { // Bar content region
         implicitWidth: rightSectionRowLayout.implicitWidth
         implicitHeight: Appearance.sizes.baseBarHeight
 
-        onScrollDown: {
-            const currentVolume = Audio.value;
-            const step = currentVolume < 0.1 ? 0.01 : 0.02 || 0.2;
-            Audio.sink.audio.volume -= step;
-        }
-        onScrollUp: {
-            const currentVolume = Audio.value;
-            const step = currentVolume < 0.1 ? 0.01 : 0.02 || 0.2;
-            Audio.sink.audio.volume = Math.min(1, Audio.sink.audio.volume + step);
-        }
+        onScrollDown: Audio.decrementVolume();
+        onScrollUp: Audio.incrementVolume();
         onMovedAway: GlobalStates.osdVolumeOpen = false;
         onPressed: event => {
             if (event.button === Qt.LeftButton) {
@@ -218,7 +218,8 @@ Item { // Bar content region
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
         }
-RowLayout {
+
+        RowLayout {
             id: rightSectionRowLayout
             anchors.fill: parent
             spacing: 5
@@ -339,6 +340,5 @@ RowLayout {
                 }
             }
         }
-
     }
 }
