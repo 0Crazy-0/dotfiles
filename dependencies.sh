@@ -77,7 +77,7 @@ install_yay() {
 # --- PACKAGE LISTS ---
 OFFICIAL_PACKAGES=(
   "base-devel" "fish" "starship" "hyprland" "kitty" "neovim" "qt5-tools" 
-  "dolphin" "eza" "cliphist" "ddcutil" "fuzzel" "glib2" "hypridle" 
+  "dolphin" "ffmpegthumbs" "eza" "cliphist" "ddcutil" "fuzzel" "glib2" "hypridle" 
   "hyprutils" "hyprlock" "hyprpicker" "nm-connection-editor" "swww" 
   "grim" "slurp" "geoclue" "nano" "brightnessctl" "axel" "bc" "coreutils" 
   "cmake" "curl" "rsync" "wget" "ripgrep" "jq" "meson" "xdg-user-dirs" 
