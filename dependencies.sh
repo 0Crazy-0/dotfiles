@@ -96,7 +96,7 @@ AUR_PACKAGES=(
   "breeze-plus" "darkly-bin" "matugen-bin" "otf-space-grotesk" 
   "ttf-gabarito-git" "ttf-jetbrains-mono-nerd" "ttf-material-symbols-variable-git"
   "ttf-readex-pro" "ttf-rubik-vf" "ttf-twemoji" "hyprcursor" 
-  "hyprland-qt-support" "hyprlang" "hyprsunset" "hyprwayland-scanner" 
+  "hyprland-qt-support" "hyprlang" "hyprwayland-scanner" 
   "xdg-desktop-portal-hyprland" "wl-clipboard" "bluedevil" "gnome-keyring" 
   "networkmanager" "plasma-nm" "polkit-kde-agent" "systemsettings" "uv" 
   "hyprshot" "swappy" "wtype" "ydotool" "google-breakpad" "qt6-avif-image-plugin"
