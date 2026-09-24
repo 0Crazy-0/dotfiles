@@ -188,7 +188,7 @@ ContentPage {
                 materialIcon: "auto_stories"
                 mainText: Translation.tr("Documentation")
                 onClicked: {
-                    Qt.openUrlExternally("https://github.com/0CrazyLove/dotfiles/blob/main/SECURITY.md")
+                    Qt.openUrlExternally("https://github.com/0Crazy-0/dotfiles/blob/main/README.md")
                 }
             }
              
