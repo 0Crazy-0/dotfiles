@@ -104,7 +104,7 @@ AUR_PACKAGES=(
 )
 
 OPTIONAL_PACKAGES=(
-  "visual-studio-code-bin" "discord" "brave-bin"
+  "discord" "firefox"
 )
 
 # --- MAIN EXECUTION ---
@@ -136,7 +136,7 @@ print_info "Optional packages available: ${OPTIONAL_PACKAGES[*]}"
 read -t 30 -p "Install optional packages? (y/N) [timeout 30s]: " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    yay -S --needed --noconfirm "${OPTIONAL_PACKAGES[@]}"
+    sudo pacman -S --needed --noconfirm "${OPTIONAL_PACKAGES[@]}"
 fi
 
 # --- Final Verification ---
