@@ -56,21 +56,21 @@ fix_pgp_keys() {
     fi
 }
 
-# --- Install Yay (AUR Helper) ---
-install_yay() {
-    if ! command -v yay >/dev/null 2>&1; then
-        print_info "Installing yay (AUR Helper)..."
+# --- Install Paru (AUR Helper) ---
+install_paru() {
+    if ! command -v paru >/dev/null 2>&1; then
+        print_info "Installing paru (AUR Helper)..."
         sudo pacman -S --needed --noconfirm git base-devel
         
         cd /tmp || exit
-        rm -rf yay
-        git clone https://aur.archlinux.org/yay.git
-        cd yay || exit
+        rm -rf paru
+        git clone https://aur.archlinux.org/paru.git
+        cd paru || exit
         makepkg -si --noconfirm
         cd ~ || exit
-        print_success "yay installed successfully."
+        print_success "paru installed successfully."
     else
-        print_success "yay is already installed."
+        print_success "paru is already installed."
     fi
 }
 
@@ -123,13 +123,13 @@ else
     print_warning "Attempting to continue..."
 fi
 
-install_yay
+install_paru
 print_info "Installing AUR packages..."
-if yay -S --needed --noconfirm "${AUR_PACKAGES[@]}"; then
+if paru -S --needed --noconfirm "${AUR_PACKAGES[@]}"; then
     print_success "AUR packages installed."
 else
     print_warning "Some AUR packages failed. You can retry manually with:"
-    echo "yay -S ${AUR_PACKAGES[*]}"
+    echo "paru -S ${AUR_PACKAGES[*]}"
 fi
 
 print_info "Optional packages available: ${OPTIONAL_PACKAGES[*]}"
