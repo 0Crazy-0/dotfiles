@@ -71,7 +71,7 @@ Run each script separately if you prefer more control:
 - Checks it runs on Arch (`pacman` must exist) and fixes `$HOME` ownership if needed.
 - Verifies the pacman keyring and updates the system (`pacman -Syu`).
 - Installs 75 official packages with pacman (full list in [Dependencies](#dependencies)).
-- Installs `yay` if missing, then 37 AUR packages (full list in [Dependencies](#dependencies)).
+- Installs `paru` if missing, then 37 AUR packages (full list in [Dependencies](#dependencies)).
 - Offers 3 optional packages (VS Code, Discord, Brave) with a 30-second prompt; it skips them on timeout.
 - Verifies critical packages (`hyprland`, `kitty`, `imagemagick`, `xdg-desktop-portal-hyprland`) at the end.
 
@@ -122,7 +122,7 @@ syntax-highlighting imagemagick python-pip go cava gnome-system-monitor
 pavucontrol-qt fastfetch songrec hyprsunset noto-fonts-cjk
 ```
 
-### AUR packages (yay, 37)
+### AUR packages (paru, 37)
 
 ```text
 translate-shell python-materialyoucolor wlogout adw-gtk-theme-git
@@ -135,7 +135,7 @@ hyprshot swappy wtype ydotool google-breakpad qt6-avif-image-plugin
 upscayl-bin cpptrace jemalloc
 ```
 
-### Optional packages (yay, prompted, 3)
+### Optional packages (paru, prompted, 3)
 
 ```text
 visual-studio-code-bin discord brave-bin

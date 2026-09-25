@@ -87,9 +87,9 @@ check_and_prompt_upscale() {
                         -c "im.error" \
                         -A "install_upscayl=Install Upscayl (Arch)" \
                         "Install Upscayl?" \
-                        "yay -S upscayl-bin")
+                        "paru -S upscayl-bin")
                     if [[ "$action2" == "install_upscayl" ]]; then
-                        kitty -1 yay -S upscayl-bin
+                        kitty -1 paru -S upscayl-bin
                         if command -v upscayl &>/dev/null; then
                             nohup upscayl > /dev/null 2>&1 &
                         fi
