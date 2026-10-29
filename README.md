@@ -72,7 +72,7 @@ Run each script separately if you prefer more control:
 - Verifies the pacman keyring and updates the system (`pacman -Syu`).
 - Installs 75 official packages with pacman (full list in [Dependencies](#dependencies)).
 - Installs `paru` if missing, then 37 AUR packages (full list in [Dependencies](#dependencies)).
-- Offers 3 optional packages (VS Code, Discord, Brave) with a 30-second prompt; it skips them on timeout.
+- Offers 2 optional packages (Discord and Firefox) with a 30-second prompt; it skips them on timeout.
 - Verifies critical packages (`hyprland`, `kitty`, `imagemagick`, `xdg-desktop-portal-hyprland`) at the end.
 
 **`install.sh`** installs the configurations:
@@ -135,10 +135,10 @@ hyprshot swappy wtype ydotool google-breakpad qt6-avif-image-plugin
 upscayl-bin cpptrace jemalloc
 ```
 
-### Optional packages (paru, prompted, 3)
+### Optional packages (pacman, prompted, 2)
 
 ```text
-visual-studio-code-bin discord brave-bin
+discord firefox
 ```
 
 ## Configured applications
